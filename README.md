@@ -9,3 +9,12 @@ Durant les trois premières séances de TD, nous étudierons les différentes ph
 Les deux séances suivantes auront lieu en salle machines et consisteront en des travaux pratiques en langage SQL.  
 
 Enfin, la dernière séance sera consacrée à l'[algèbre relationnelle](https://fr.wikipedia.org/wiki/Alg%C3%A8bre_relationnelle).
+
+## Du modèle conceptuel des données au modèle logique
+La transcription des diagrammes du **modèle entité-association** dans un **modèle relationnel** obéit aux règles suivantes :
+* Toutes les entités deviennent des *relations*, également appelées tables ;
+* Les attributs sont les colonnes de ces tables ;
+* L'identifiant est appelé *clef primaire* ;
+* Pour les associations, deux cas possibles :
+  * Si cardinalité (x,n)/(x,n), l'association est représentée par une table intermédiaire, avec 
+  * dfdffd
