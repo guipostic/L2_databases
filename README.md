@@ -13,8 +13,8 @@ Enfin, la dernière séance sera consacrée à l'[algèbre relationnelle](https:
 ## Du modèle conceptuel des données au modèle logique
 La transcription des diagrammes du **modèle entité-association** dans un **modèle relationnel** obéit aux règles suivantes :
 * Toutes les entités deviennent des *relations*, également appelées tables ;
-* Les attributs sont les colonnes de ces tables ;
+* Les attributs des entités sont les colonnes de ces tables ;
 * L'identifiant est appelé *clef primaire* ;
 * Pour les associations, deux cas possibles :
-  * Si cardinalité (x,n)/(x,n), l'association est représentée par une table intermédiaire, avec 
-  * dfdffd
+  * Si cardinalités (x,n)/(x,n), l'association est représentée par une table intermédiaire, dont la clef primaire est une concaténation de celles des deux tables associées
+  * Si cardinalité (x,1)/(x,n), l'association est représentée par ajout de la clef primaire d'une table aux attributs de l'autre ; celle-ci est alors appelée *clef étrangère* ; les éventuels attributs de l'association sont alors déplacés vers les tables associées.
