@@ -10,6 +10,9 @@ Les deux séances suivantes auront lieu en salle machines et consisteront en des
 
 Enfin, la dernière séance sera consacrée à l'[algèbre relationnelle](https://fr.wikipedia.org/wiki/Alg%C3%A8bre_relationnelle).
 
+## Modèle conceptuel : diagramme entité-association
+La solution alternative présentée pour le problème 4 est extraite des travaux de [De Gorostiza *et al.* (2017)](http://dx.doi.org/10.25147/ijcsr.2017.001.1.15).
+
 ## Du modèle conceptuel des données au modèle logique
 La transcription des diagrammes du **modèle entité-association** dans un **modèle relationnel** obéit aux règles suivantes :
 * Toutes les entités deviennent des *relations*, également appelées tables ;
