@@ -12,9 +12,9 @@ Enfin, la dernière séance sera consacrée à l'[algèbre relationnelle](https:
 
 ## Modèle conceptuel des données : diagramme entité-association
 Établir un schéma conceptuel, selon le modèle entité-association, consiste à identifier :
-- les entités, qu’elles soient concrètes (individu, objet, etc.) ou abstraites (langue parlée, catégorie d’objet, etc.) ;
-- les associations qui les relient avec une certaine cardinalité ; les noms donnés aux associations sont le plus souvent des verbes ;
-- les attributs des entités (au minimum un : l’identifiant) et, éventuellement, ceux des associations.
+- les [entités](https://fr.wikipedia.org/wiki/Entit%C3%A9#En_informatique), qu’elles soient concrètes (individu, objet, etc.) ou abstraites (langue parlée, catégorie d’objet, etc.) ;
+- les **associations** qui les relient avec une certaine [cardinalité](https://fr.wikipedia.org/wiki/Cardinalit%C3%A9_(programmation)) ; les noms donnés aux associations sont le plus souvent des verbes ;
+- les **attributs** qui décrivent les entités (au minimum un : **l’identifiant**) et, éventuellement, ceux des associations.
 
 **L’espace mémoire alloué pour les valeurs que peut prendre un attribut est fixe.** Autrement dit, la valeur associée à un attribut ne peut pas être une liste de taille variable. Cette contrainte nécessitera parfois de créer une entité pour ce qui aurait pu autrement être un attribut. Par exemple, dans le Problème 1, si on ne retient que le premier centre d'intérêt du CV, alors celui-ci peut être utilisé comme attribut. En revanche, si l’on autorise une liste non-limitée de centres d’intérêts, alors il faut créer une entité qui les listera.
 
