@@ -10,7 +10,7 @@ Les deux séances suivantes auront lieu en salle machines et consisteront en des
 
 Enfin, la dernière séance sera consacrée à l'[algèbre relationnelle](https://fr.wikipedia.org/wiki/Alg%C3%A8bre_relationnelle).
 
-## Modèle conceptuel des données : diagramme entité-association
+## 1. Modèle conceptuel des données : diagramme entité-association
 Établir un schéma conceptuel, selon le modèle entité-association, consiste à identifier :
 - les [entités](https://fr.wikipedia.org/wiki/Entit%C3%A9#En_informatique), qu’elles soient concrètes (individu, objet, etc.) ou abstraites (langue parlée, catégorie d’objet, etc.) ;
 - les **associations** qui les relient avec une certaine [cardinalité](https://fr.wikipedia.org/wiki/Cardinalit%C3%A9_(programmation)) ; les noms donnés aux associations sont le plus souvent des verbes ;
@@ -20,7 +20,7 @@ Enfin, la dernière séance sera consacrée à l'[algèbre relationnelle](https:
 
 Dans le cadre de cette UE, les diagrammes conceptuels représenteront les entités par des rectangles, les associations par des ovales et les cardinalités par des paires de chiffres. Dans la solution alternative présentée pour le Problème 4 (extraite des travaux de [De Gorostiza *et al.*, 2017](http://dx.doi.org/10.25147/ijcsr.2017.001.1.15)), la convention d'écriture utilisée est différente de celle vue en cours : les cardinalités y sont [représentées par des symboles](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model#/media/File:ERD_Representation.svg).
 
-## Modèle logique
+## 2. Modèle logique
 La transcription des diagrammes du **modèle entité-association** dans un **modèle relationnel** obéit aux règles suivantes :
 * Toutes les entités deviennent des **relations**, également appelées tables ;
 * Les attributs des entités sont les colonnes de ces tables. Après implémentation, chaque enregistrement dans la base ajoutera une ligne, aussi appelée [uplet](https://fr.wikipedia.org/wiki/Uplet) ou *tuple*, à ces tables ; cela signifie que chaque ligne aura nécessairement le même nombre de colonnes, quitte à ce que certains attributs aient une valeur nulle ;
