@@ -27,7 +27,7 @@ La transcription des diagrammes du **modèle entité-association** dans un **mod
 * L'identifiant est appelé [clef primaire](https://fr.wikipedia.org/wiki/Cl%C3%A9_primaire) ;
 * Pour les associations, deux cas possibles :
   * Si cardinalités (x,n)/(x,n), l'association est représentée par une **table intermédiaire**, dont la clef primaire résulte de la concaténation[^1] de celles des deux tables associées. En pratique, la concaténation nécessitera parfois l’inclusion d’une information supplémentaire[^2] ;
-  * Si cardinalité (x,1)/(x,n), l'association est représentée par ajout de la clef primaire d'une table aux attributs de l'autre[^3] ; celle-ci est alors appelée [clef étrangère](https://fr.wikipedia.org/wiki/Cl%C3%A9_%C3%A9trang%C3%A8re) ; les éventuels attributs de l'association sont alors déplacés vers les tables associées. C’est l’entité associée avec une cardinalité de (x,n) qui voit son identifiant être utilisé comme clé étrangère[^4].
+  * Si cardinalité [(x,1)](https://fr.wikipedia.org/wiki/Association_plusieurs-%C3%A0-un)/(x,n), l'association est représentée par ajout de la clef primaire d'une table aux attributs de l'autre[^3] ; celle-ci est alors appelée [clef étrangère](https://fr.wikipedia.org/wiki/Cl%C3%A9_%C3%A9trang%C3%A8re) ; les éventuels attributs de l'association sont alors déplacés vers les tables associées. C’est l’entité associée avec une cardinalité de (x,n) qui voit son identifiant être utilisé comme clé étrangère[^4].
 
 [^1]: Au niveau physique, lors de la concaténation, le SGBD conserve les informations des deux clefs primaires, afin de pouvoir associer les deux entités. L’utilisateur n’a cependant pas besoin d’avoir accès à ces opérations.
 
