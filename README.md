@@ -23,7 +23,7 @@ Dans le cadre de cette UE, les diagrammes conceptuels représenteront les entit�
 ## Modèle logique
 La transcription des diagrammes du **modèle entité-association** dans un **modèle relationnel** obéit aux règles suivantes :
 * Toutes les entités deviennent des **relations**, également appelées tables ;
-* Les attributs des entités sont les colonnes de ces tables (note : après implémentation, chaque enregistrement dans la base ajoutera une ligne, aussi appelée [uplet](https://fr.wikipedia.org/wiki/Uplet) ou *tuple*, à ces tables) ;
+* Les attributs des entités sont les colonnes de ces tables. Après implémentation, chaque enregistrement dans la base ajoutera une ligne, aussi appelée [uplet](https://fr.wikipedia.org/wiki/Uplet) ou *tuple*, à ces tables ; cela signifie que chaque ligne aura nécessairement le même nombre de colonnes, quitte à ce que certains attributs aient une valeur nulle ;
 * L'identifiant est appelé [clef primaire](https://fr.wikipedia.org/wiki/Cl%C3%A9_primaire) ;
 * Pour les associations, deux cas possibles :
   * Si cardinalité (x,n)/(x,n), l'association est représentée par une **table intermédiaire**, dont la clef primaire résulte de la concaténation[^1] de celles des deux tables associées. **Dans la pratique**, la concaténation nécessitera parfois l’inclusion d’une information supplémentaire[^2] ;
@@ -32,6 +32,8 @@ La transcription des diagrammes du **modèle entité-association** dans un **mod
 Une clef étrangère est donc un attribut de la relation, c. -à-d. une colonne de la table. En lui-même, cet attribut ne fournit aucune description : il n’est qu’un code. Cependant, sa valeur renvoie à un enregistrement dans une autre table, dont il est la clef primaire.
 
 En général, une [cardinalité (1,1)](https://fr.wikipedia.org/wiki/Association_un-%C3%A0-un) ne devrait pas apparaître sur les diagrammes conceptuels.
+
+Si le minimum de la cardinalité est strictement supérieur à 1 (« plusieurs »), celle-ci sera notée (2,n) ou parfois [(n,n)](https://fr.wikipedia.org/wiki/Mod%C3%A8le_relationnel#Relation_N:N), selon les conventions.
 
 [^1]: Au niveau physique, lors de la concaténation, le SGBD conserve les informations des deux clefs primaires, afin de pouvoir associer les deux entités. L’utilisateur n’a cependant pas besoin d’avoir accès à ces opérations.
 
