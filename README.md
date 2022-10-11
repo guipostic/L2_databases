@@ -26,18 +26,13 @@ La transcription des diagrammes du **modèle entité-association** dans un **mod
 * Les attributs des entités sont les colonnes de ces tables (note : après implémentation, chaque enregistrement dans la base ajoutera une ligne, aussi appelée [uplet](https://fr.wikipedia.org/wiki/Uplet) ou *tuple*, à ces tables) ;
 * L'identifiant est appelé [clef primaire](https://fr.wikipedia.org/wiki/Cl%C3%A9_primaire) ;
 * Pour les associations, deux cas possibles :
-  * Si cardinalités (x,n)/(x,n), l'association est représentée par une **table intermédiaire**, dont la clef primaire résulte de la concaténation de celles des deux tables associées ;
-  * Si cardinalité (x,1)/(x,n), l'association est représentée par ajout de la clef primaire d'une table aux attributs de l'autre ; celle-ci est alors appelée [clef étrangère](https://fr.wikipedia.org/wiki/Cl%C3%A9_%C3%A9trang%C3%A8re) ; les éventuels attributs de l'association sont alors déplacés vers les tables associées.
+  * Si cardinalités (x,n)/(x,n), l'association est représentée par une **table intermédiaire**, dont la clef primaire résulte de la concaténation[^1] de celles des deux tables associées. En pratique, la concaténation nécessitera parfois l’inclusion d’une information supplémentaire[^2] ;
+  * Si cardinalité (x,1)/(x,n), l'association est représentée par ajout de la clef primaire d'une table aux attributs de l'autre ; celle-ci est alors appelée [clef étrangère](https://fr.wikipedia.org/wiki/Cl%C3%A9_%C3%A9trang%C3%A8re) ; les éventuels attributs de l'association sont alors déplacés vers les tables associées. C’est l’entité associée avec une cardinalité de (x,n) qui voit son identifiant être utilisé comme clé étrangère[^3].
 
-### Notes
-C’est l’entité associée avec une cardinalité de (x,n) qui voit son identifiant être utilisé comme clé étrangère. Dans le Problème 3, puisqu’un livre ne peut appartenir qu’à une seule catégorie de livre, l’identifiant de la catégorie sera clef étrangère dans la table enregistrant les livres.  
+[^1]: Au niveau physique, lors de la concaténation, le SGBD conserve les informations des deux clefs primaires, afin de pouvoir associer les deux entités. L’utilisateur n’a cependant pas besoin d’avoir accès à ces opérations.
 
-C’est l’interdiction d’avoir une liste comme valeur associée à un attribut qui fait que l’identifiant de l’entité associée avec une cardinalité de (x,1) ne peut pas être utilisé comme clef étrangère. Dans le Problème 2, l'identifiant d’un salarié ne peut pas être utilisé comme attribut d’une entreprise.  
+[^2]: Par exemple, dans le Problème 3, les entrées dans une table enregistrant des emprunts de livres devront être identifiées par concaténation de la clef primaire du livre, de celle du lecteur et de la date d’emprunt. Autrement, la contrainte d’unicité sur les clefs primaires empêche un lecteur d’emprunter un exemplaire de livre particulier plus d’une fois.
 
-Une clef étrangère est donc un attribut de la relation, c. -à-d. une colonne de la table. En lui-même, cet attribut ne fournit aucune description : il n’est qu’un code. Cependant, sa valeur renvoie à un enregistrement dans une autre table, dont il est la clef primaire.
+[^3]: Dans le Problème 3, puisqu’un livre ne peut appartenir qu’à une seule catégorie de livre, l’identifiant de la catégorie sera clef étrangère dans la table enregistrant les livres. C’est l’interdiction d’avoir une liste comme valeur associée à un attribut qui fait que l’identifiant de l’entité associée avec une cardinalité de (x,1) ne peut pas être utilisé comme clef étrangère. Dans le Problème 2, l'identifiant d’un salarié ne peut pas être utilisé comme attribut d’une entreprise. Une clef étrangère est donc un attribut de la relation, c. -à-d. une colonne de la table. En lui-même, cet attribut ne fournit aucune description : il n’est qu’un code. Cependant, sa valeur renvoie à un enregistrement dans une autre table, dont il est la clef primaire.
 Il est techniquement possible de représenter une association (x,n)/(x,1) par une table intermédiaire, mais cela créerait inutilement de la redondance.
-
-Au niveau physique, lors de la concaténation, le SGBD conserve les informations des deux clefs primaires, afin de pouvoir associer les deux entités. L’utilisateur n’a cependant pas besoin d’avoir accès à ces opérations.
-
-En pratique, la concaténation nécessitera parfois l’inclusion d’une information supplémentaire. Par exemple, les entrées dans une table enregistrant des emprunts de livres devront être identifiées par concaténation de la clef primaire du livre, de celle du lecteur et de la date d’emprunt. Autrement, la contrainte d’unicité sur les clefs primaires empêche un lecteur d’emprunter un exemplaire de livre particulier plus d’une fois.
 
