@@ -67,11 +67,13 @@ INSERT INTO `Cinema` (`Nom_c`, `Arrondissement`) VALUES ('Pathe Les Fauvettes', 
 INSERT INTO `Cinema` (`Nom_c`, `Arrondissement`) VALUES ('Escurial', '13');
 
 
-INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('1', 'UGC Montparnasse', '1', '200');
+INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('1', 'UGC Montparnasse', '1', '100');
 INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('2', 'UGC Montparnasse', '1', '300');
+INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('3', 'UGC Montparnasse', '0', '267');
 INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('1', 'Grand Rex', '1', '1500');
 INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('2', 'Grand Rex', '1', '1700');
 INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('1', 'Pathe Les Fauvettes', '0', '300');
+INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('2', 'Pathe Les Fauvettes', '1', '178');
 INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('1', 'Escurial', '0', '150');
 INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('2', 'Escurial', '1', '400');
 INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('3', 'Escurial', '0', '100');
@@ -118,6 +120,15 @@ INSERT INTO `Role` (`Libelle`, `ID_Film`, `Acteur`) VALUES ('Walt Kowalski', '8'
 
 
 INSERT INTO `Seance` (`Nom_c`, `No_salle`, `No_seance`, `Heure_debut`, `Heure_fin`, `ID_Film`)  VALUES ('Grand Rex', '2', '23', '9', '12', '1');
-INSERT INTO `Seance` (`Nom_c`, `No_salle`, `No_seance`, `Heure_debut`, `Heure_fin`, `ID_Film`)  VALUES ('Escurial', '7', '23', '10', '13', '2');
+INSERT INTO `Seance` (`Nom_c`, `No_salle`, `No_seance`, `Heure_debut`, `Heure_fin`, `ID_Film`)  VALUES ('Grand Rex', '1', '24', '11', '13', '3');
+INSERT INTO `Seance` (`Nom_c`, `No_salle`, `No_seance`, `Heure_debut`, `Heure_fin`, `ID_Film`)  VALUES ('Grand Rex', '2', '65', '21', '23', '4');
+INSERT INTO `Seance` (`Nom_c`, `No_salle`, `No_seance`, `Heure_debut`, `Heure_fin`, `ID_Film`)  VALUES ('Escurial', '1', '23', '10', '13', '2');
+INSERT INTO `Seance` (`Nom_c`, `No_salle`, `No_seance`, `Heure_debut`, `Heure_fin`, `ID_Film`)  VALUES ('Escurial', '2', '27', '10', '13', '5');
+INSERT INTO `Seance` (`Nom_c`, `No_salle`, `No_seance`, `Heure_debut`, `Heure_fin`, `ID_Film`)  VALUES ('Escurial', '3', '30', '10', '13', '6');
+INSERT INTO `Seance` (`Nom_c`, `No_salle`, `No_seance`, `Heure_debut`, `Heure_fin`, `ID_Film`)  VALUES ('UGC Montparnasse', '1', '23', '20', '22', '9');
+INSERT INTO `Seance` (`Nom_c`, `No_salle`, `No_seance`, `Heure_debut`, `Heure_fin`, `ID_Film`)  VALUES ('UGC Montparnasse', '2', '45', '21', '23', '8');
+INSERT INTO `Seance` (`Nom_c`, `No_salle`, `No_seance`, `Heure_debut`, `Heure_fin`, `ID_Film`)  VALUES ('UGC Montparnasse', '3', '46', '21', '23', '7');
+
+
 
 
