@@ -39,13 +39,14 @@ SELECT Titre FROM Film WHERE Annee >= 1980 AND Annee <= 1990;
 SELECT Titre FROM Film WHERE Realisateur = "Woody Allen";
 
 /*13*/
-/* renvoie films où acteur ET réal */
+/* Renvoie films où acteur ET/OU réal
+   Pour un ou "exclusif", utiliser l'opérateur XOR */
 SELECT Titre FROM Film f
 		JOIN Role r
 		ON f.ID_Film = r.ID_Film
 		WHERE r.Acteur = "Clint Eastwood" OR f.Realisateur = "Clint Eastwood"; 
 
-SELECT Titre FROM Film f, Role r WHERE f.ID_Film = r.ID_Film AND (Acteur = "Clint Eastwood" OR Realisateur = "Clint Eastwood");
+SELECT Titre FROM Film f, Role r WHERE f.ID_Film = r.ID_Film AND (r.Acteur = "Clint Eastwood" OR f.Realisateur = "Clint Eastwood");
 
 /*14*/
 SELECT * FROM Film ORDER BY Titre;
@@ -96,28 +97,16 @@ FROM (
 	) AS table1
 	GROUP BY Nom_c
 ) AS table2;
+/* même si l'alias "table2" n'est pas utilisé, il est obligatoire, car les "tables dérivées" */
 
 
-/*23*/
-SELECT Nom_c, SUM(compte) AS nombre_salles
-FROM (
-	SELECT Nom_c, 1 AS compte
-	FROM Salle
-) table0
-GROUP BY Nom_c
-WHERE nombre_salles
-IN (
-	SELECT MAX(nombre_salles)
+
+	SELECT Nom_c, SUM(compte) AS nombre_salles
 	FROM (
-		SELECT Nom_c, SUM(compte) AS nombre_salles
-		FROM (
-			SELECT Nom_c, 1 AS compte
-			FROM Salle
-		) AS table1
-		GROUP BY Nom_c
-	) AS table2
-);
+		SELECT Nom_c, 1 AS compte
+		FROM Salle
+	) AS table1
+	GROUP BY Nom_c ORDER BY nombre_salles DESC
 
 
-/*Cinema avec le plus de salles = Film avec le plus de roles*/
 

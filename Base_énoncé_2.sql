@@ -3,6 +3,8 @@ Pas de tiret dans les noms des variables : remplacer par des underscores
 
 
 */
+SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY','')); /* pour la question 23 */
+
 
 CREATE TABLE Cinema 
 ( 
@@ -70,6 +72,7 @@ INSERT INTO `Cinema` (`Nom_c`, `Arrondissement`) VALUES ('Escurial', '13');
 INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('1', 'UGC Montparnasse', '1', '100');
 INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('2', 'UGC Montparnasse', '1', '300');
 INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('3', 'UGC Montparnasse', '0', '267');
+INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('4', 'UGC Montparnasse', '0', '213');
 INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('1', 'Grand Rex', '1', '1500');
 INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('2', 'Grand Rex', '1', '1700');
 INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('1', 'Pathe Les Fauvettes', '0', '300');
@@ -77,6 +80,7 @@ INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('2', 
 INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('1', 'Escurial', '0', '150');
 INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('2', 'Escurial', '1', '400');
 INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('3', 'Escurial', '0', '100');
+INSERT INTO `Salle` (`No_salle`, `Nom_c`, `Climatise`, `Capacite`) VALUES ('4', 'Escurial', '0', '100');
 
 
 INSERT INTO `Artiste` (`Nom`, `Annee_Naissance`) VALUES ('Hayden Christensen', '1981');
@@ -95,6 +99,9 @@ INSERT INTO `Artiste` (`Nom`, `Annee_Naissance`) VALUES ('Samuel L Jackson', '19
 INSERT INTO `Artiste` (`Nom`, `Annee_Naissance`) VALUES ('Bill Murray', '1950');
 INSERT INTO `Artiste` (`Nom`, `Annee_Naissance`) VALUES ('Daniel Day-Lewis', '1957');
 INSERT INTO `Artiste` (`Nom`, `Annee_Naissance`) VALUES ('Don Siegel', '1912');
+INSERT INTO `Artiste` (`Nom`, `Annee_Naissance`) VALUES ('Matt Damon', '1970');
+INSERT INTO `Artiste` (`Nom`, `Annee_Naissance`) VALUES ('Jack Nicholson', '1937');
+INSERT INTO `Artiste` (`Nom`, `Annee_Naissance`) VALUES ('Harrison Ford', '1942');
 
 
 INSERT INTO `Film` (`ID_Film`, `Realisateur`, `Titre`, `Annee`) VALUES ('1', 'Christopher Nolan', 'The Dark Knight', '2008');
@@ -116,6 +123,10 @@ INSERT INTO `Role` (`Libelle`, `ID_Film`, `Acteur`) VALUES ('Mace Windu', '2', '
 INSERT INTO `Role` (`Libelle`, `ID_Film`, `Acteur`) VALUES ('Tyler Durden', '3', 'Brad Pitt');
 INSERT INTO `Role` (`Libelle`, `ID_Film`, `Acteur`) VALUES ('Alvy Singer', '4', 'Woody Allen');
 INSERT INTO `Role` (`Libelle`, `ID_Film`, `Acteur`) VALUES ('Walt Kowalski', '8', 'Clint Eastwood');
+INSERT INTO `Role` (`Libelle`, `ID_Film`, `Acteur`) VALUES ('Harry Callahan', '9', 'Clint Eastwood');
+INSERT INTO `Role` (`Libelle`, `ID_Film`, `Acteur`) VALUES ('Francois Pienaar', '6', 'Matt Damon');
+INSERT INTO `Role` (`Libelle`, `ID_Film`, `Acteur`) VALUES ('Jack Torrance', '5', 'Jack Nicholson');
+INSERT INTO `Role` (`Libelle`, `ID_Film`, `Acteur`) VALUES ('Rick Deckard', '7', 'Harrison Ford');
 
 
 
@@ -125,7 +136,7 @@ INSERT INTO `Seance` (`Nom_c`, `No_salle`, `No_seance`, `Heure_debut`, `Heure_fi
 INSERT INTO `Seance` (`Nom_c`, `No_salle`, `No_seance`, `Heure_debut`, `Heure_fin`, `ID_Film`)  VALUES ('Escurial', '1', '23', '10', '13', '2');
 INSERT INTO `Seance` (`Nom_c`, `No_salle`, `No_seance`, `Heure_debut`, `Heure_fin`, `ID_Film`)  VALUES ('Escurial', '2', '27', '10', '13', '5');
 INSERT INTO `Seance` (`Nom_c`, `No_salle`, `No_seance`, `Heure_debut`, `Heure_fin`, `ID_Film`)  VALUES ('Escurial', '3', '30', '10', '13', '6');
-INSERT INTO `Seance` (`Nom_c`, `No_salle`, `No_seance`, `Heure_debut`, `Heure_fin`, `ID_Film`)  VALUES ('UGC Montparnasse', '1', '23', '20', '22', '9');
+INSERT INTO `Seance` (`Nom_c`, `No_salle`, `No_seance`, `Heure_debut`, `Heure_fin`, `ID_Film`)  VALUES ('UGC Montparnasse', '4', '23', '20', '22', '9');
 INSERT INTO `Seance` (`Nom_c`, `No_salle`, `No_seance`, `Heure_debut`, `Heure_fin`, `ID_Film`)  VALUES ('UGC Montparnasse', '2', '45', '21', '23', '8');
 INSERT INTO `Seance` (`Nom_c`, `No_salle`, `No_seance`, `Heure_debut`, `Heure_fin`, `ID_Film`)  VALUES ('UGC Montparnasse', '3', '46', '21', '23', '7');
 
