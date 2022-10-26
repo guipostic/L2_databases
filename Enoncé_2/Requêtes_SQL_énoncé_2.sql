@@ -88,25 +88,29 @@ SELECT COUNT(*) FROM Salle WHERE Nom_c = "Escurial";
 
 
 /*22*/
-SELECT MAX(nombre_salles), AVG(nombre_salles)
+SELECT Nom_c, MAX(nombre_salles), AVG(nombre_salles)
 FROM (
 	SELECT Nom_c, SUM(compte) AS nombre_salles
 	FROM (
 		SELECT Nom_c, 1 AS compte
 		FROM Salle
-	) AS table1
+	) table1
 	GROUP BY Nom_c
-) AS table2;
+) table2;
 /* même si l'alias "table2" n'est pas utilisé, il est obligatoire, car les "tables dérivées" */
 
 
-
-	SELECT Nom_c, SUM(compte) AS nombre_salles
-	FROM (
-		SELECT Nom_c, 1 AS compte
-		FROM Salle
-	) AS table1
-	GROUP BY Nom_c ORDER BY nombre_salles DESC
+/* Plus simplement: */
+SELECT Nom_c, MAX(nombre_salles), AVG(nombre_salles)
+FROM (SELECT Nom_c, COUNT(*) AS nombre_salles FROM Salle GROUP BY Nom_c) table1
 
 
+
+/*23*/
+SELECT Nom_c, nombre_salles
+FROM (SELECT Nom_c, COUNT(*) AS nombre_salles FROM Salle GROUP BY Nom_c) table1
+WHERE nombre_salles = (SELECT MAX(lol) FROM (SELECT Nom_c, COUNT(*) AS lol FROM Salle GROUP BY Nom_c) table2)
+
+/*24*/
+SELECT f.Titre, COUNT(*) FROM Role r, Film f WHERE r.ID_Film = f.ID_Film GROUP BY r.ID_Film
 
