@@ -97,7 +97,8 @@ FROM (
 	) table1
 	GROUP BY Nom_c
 ) table2;
-/* même si l'alias "table2" n'est pas utilisé, il est obligatoire, car les "tables dérivées" */
+/* même si l'alias "table2" n'est pas utilisé, il est obligatoire pour les "tables dérivées" */
+/* le mot clef AS n'est pas nécessaire pour créer les alias des tables dérivées */
 
 
 /* Plus simplement: */
@@ -107,10 +108,70 @@ FROM (SELECT Nom_c, COUNT(*) AS nombre_salles FROM Salle GROUP BY Nom_c) table1
 
 
 /*23*/
+/* Solution 1 */
 SELECT Nom_c, nombre_salles
-FROM (SELECT Nom_c, COUNT(*) AS nombre_salles FROM Salle GROUP BY Nom_c) table1
-WHERE nombre_salles = (SELECT MAX(lol) FROM (SELECT Nom_c, COUNT(*) AS lol FROM Salle GROUP BY Nom_c) table2)
+FROM (
+    SELECT Nom_c, COUNT(*) AS nombre_salles
+    FROM Salle
+    GROUP BY Nom_c
+) table1
+WHERE nombre_salles = (
+    SELECT MAX(lol)
+    FROM (
+        SELECT Nom_c, COUNT(*) AS lol
+        FROM Salle
+        GROUP BY Nom_c
+    ) table2
+)
+
+
+
+/* Solution 2 */
+SELECT Nom_c, COUNT(Nom_c) AS nombre_salles
+FROM Salle
+GROUP BY Nom_c
+HAVING COUNT(Nom_c) = (
+    SELECT MAX(table1.nombre_salles)
+    FROM(
+        SELECT Nom_c, COUNT(*) AS nombre_salles
+        FROM Salle
+        GROUP BY Nom_c
+    ) table1
+);
+
+
+
+/* Solution 3 */
+/* "WITH" ne fonctionne que depuis MySQL v8.0 */
+WITH table1 as(
+    SELECT Nom_c, COUNT(concat(No_salle, Nom_c)) as nombre_salles
+    FROM Salle
+    GROUP BY Nom_c
+)
+
+SELECT Nom_c, nombre_salles
+FROM(
+    SELECT Nom_c, nombre_salles, RANK() OVER (ORDER BY nombre_salles DESC) as rang
+    FROM table1
+) table2
+WHERE rang = 1
+
+
 
 /*24*/
-SELECT f.Titre, COUNT(*) FROM Role r, Film f WHERE r.ID_Film = f.ID_Film GROUP BY r.ID_Film
+SELECT Titre, COUNT(*) AS num
+FROM Film, Role
+WHERE Role.ID_Film = Film.ID_Film
+GROUP BY Role.ID_Film
+HAVING num = (SELECT MAX(y.num)
+              FROM (SELECT COUNT(*) AS num
+                    FROM Role
+                    GROUP BY ID_Film) y);
+
+
+
+
+/*SQL ANSI compatible (regardless of its "flavor") */
+
+
 

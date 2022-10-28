@@ -127,7 +127,7 @@ INSERT INTO `Role` (`Libelle`, `ID_Film`, `Acteur`) VALUES ('Harry Callahan', '9
 INSERT INTO `Role` (`Libelle`, `ID_Film`, `Acteur`) VALUES ('Francois Pienaar', '6', 'Matt Damon');
 INSERT INTO `Role` (`Libelle`, `ID_Film`, `Acteur`) VALUES ('Jack Torrance', '5', 'Jack Nicholson');
 INSERT INTO `Role` (`Libelle`, `ID_Film`, `Acteur`) VALUES ('Rick Deckard', '7', 'Harrison Ford');
-
+INSERT INTO `Role` (`Libelle`, `ID_Film`, `Acteur`) VALUES ('Old Joker', '1', 'Jack Nicholson');
 
 
 INSERT INTO `Seance` (`Nom_c`, `No_salle`, `No_seance`, `Heure_debut`, `Heure_fin`, `ID_Film`)  VALUES ('Grand Rex', '2', '23', '9', '12', '1');
