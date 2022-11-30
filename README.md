@@ -20,7 +20,8 @@ Enfin, la dernière séance sera consacrée à l'[algèbre relationnelle](https:
 
 Dans le cadre de cette UE, les diagrammes conceptuels représenteront les entités par des rectangles, les associations par des ovales et les cardinalités par des paires de chiffres. Dans la solution alternative présentée pour le Problème 4 (extraite des travaux de [De Gorostiza *et al.*, 2017](http://dx.doi.org/10.25147/ijcsr.2017.001.1.15)), la convention d'écriture utilisée est différente de celle vue en cours : les cardinalités y sont [représentées par des symboles](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model#/media/File:ERD_Representation.svg).
 
-## 2. Modèle logique : schéma relationnel
+## 2. Modèle logique
+### 2.1 Schéma relationnel
 La transcription des diagrammes du **modèle entité-association** dans un **modèle relationnel** obéit aux règles suivantes :
 * Toutes les entités deviennent des **relations**, également appelées tables ;
 * Les attributs des entités sont les colonnes de ces tables. Après implémentation, chaque enregistrement dans la base ajoutera une ligne, aussi appelée [uplet](https://fr.wikipedia.org/wiki/Uplet) ou *tuple*, à ces tables ; cela signifie que chaque ligne aura nécessairement le même nombre de colonnes, quitte à ce que certains attributs aient une valeur nulle ;
@@ -34,6 +35,8 @@ Une clef étrangère est donc un attribut de la relation, c. -à-d. une colonne 
 En général, une [cardinalité (1,1)](https://fr.wikipedia.org/wiki/Association_un-%C3%A0-un) ne devrait pas apparaître sur les diagrammes conceptuels.
 
 Si le minimum de la cardinalité est strictement supérieur à 1 (« plusieurs »), celle-ci sera notée (2,n) ou parfois [(n,n)](https://fr.wikipedia.org/wiki/Mod%C3%A8le_relationnel#Relation_N:N), selon les conventions.
+
+### 2.2 Algèbre relationnelle
 
 [^1]: Par exemple, dans le Problème 3, les entrées dans une table enregistrant des emprunts de livres devront être identifiées par concaténation de la clef primaire du livre, de celle du lecteur et de la date d’emprunt. Autrement, la contrainte d’unicité sur les clefs primaires empêche un lecteur d’emprunter un exemplaire de livre particulier plus d’une fois.
 
