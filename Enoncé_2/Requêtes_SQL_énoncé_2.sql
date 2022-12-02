@@ -76,7 +76,7 @@ WHERE ID_Film NOT IN (
 );
 
 /*19*/
-SELECT COUNT(Nom_c) FROM Cinema WHERE Arrondissement = 13;
+SELECT COUNT(Nom_c) FROM Cinema WHERE Arrondissement = 13; -- COUNT() compte le nombre de lignes, donc COUNT(*) fonctionne aussi
 
 
 /*20*/
@@ -108,29 +108,11 @@ FROM (SELECT Nom_c, COUNT(*) AS nombre_salles FROM Salle GROUP BY Nom_c) table1
 
 
 /*23*/
-/* Solution 1 */
-SELECT Nom_c, nombre_salles
-FROM (
-    SELECT Nom_c, COUNT(*) AS nombre_salles
-    FROM Salle
-    GROUP BY Nom_c
-) table1
-WHERE nombre_salles = (
-    SELECT MAX(lol)
-    FROM (
-        SELECT Nom_c, COUNT(*) AS lol
-        FROM Salle
-        GROUP BY Nom_c
-    ) table2
-)
-
-
-
-/* Solution 2 */
-SELECT Nom_c, COUNT(Nom_c) AS nombre_salles
+/* Solution 1 : on utilise la condition HAVING, nécessaire pour filtrer le résultat d'une fonction d'agrégation ; ici, "COUNT(*) AS nb_salles" */
+SELECT Nom_c, COUNT(*) AS nb_salles
 FROM Salle
 GROUP BY Nom_c
-HAVING COUNT(Nom_c) = (
+HAVING nb_salles = (
     SELECT MAX(table1.nombre_salles)
     FROM(
         SELECT Nom_c, COUNT(*) AS nombre_salles
@@ -140,18 +122,34 @@ HAVING COUNT(Nom_c) = (
 );
 
 
+/* Solution 2 : pour ne pas utiliser HAVING (donc avec WHERE à la place), il faut imbriquer le premier SELECT dans un autre qui n'a pas de fonction d'agrégation ; ici "SELECT *" */
+SELECT *
+FROM (
+    SELECT Nom_c, COUNT(*) AS nb_salles
+    FROM Salle
+    GROUP BY Nom_c
+) table1
+WHERE nb_salles = (
+    SELECT MAX(table2.nombre_salles)
+    FROM (
+        SELECT Nom_c, COUNT(*) AS nombre_salles
+        FROM Salle
+        GROUP BY Nom_c
+    ) table2
+)
+
 
 /* Solution 3 */
 /* "WITH" ne fonctionne que depuis MySQL v8.0 */
-WITH table1 as(
-    SELECT Nom_c, COUNT(concat(No_salle, Nom_c)) as nombre_salles
+WITH table1 AS(
+    SELECT Nom_c, COUNT(*) AS nombre_salles
     FROM Salle
     GROUP BY Nom_c
 )
 
 SELECT Nom_c, nombre_salles
 FROM(
-    SELECT Nom_c, nombre_salles, RANK() OVER (ORDER BY nombre_salles DESC) as rang
+    SELECT Nom_c, nombre_salles, RANK() OVER (ORDER BY nombre_salles DESC) AS rang
     FROM table1
 ) table2
 WHERE rang = 1
@@ -159,19 +157,12 @@ WHERE rang = 1
 
 
 /*24*/
-SELECT Titre, COUNT(*) AS num
+SELECT Titre, COUNT(*) AS compte
 FROM Film, Role
 WHERE Role.ID_Film = Film.ID_Film
 GROUP BY Role.ID_Film
-HAVING num = (SELECT MAX(y.num)
+HAVING compte = (SELECT MAX(table1.num)
               FROM (SELECT COUNT(*) AS num
                     FROM Role
-                    GROUP BY ID_Film) y);
-
-
-
-
-/*SQL ANSI compatible (regardless of its "flavor") */
-
-
-
+                    GROUP BY ID_Film) table1
+             );
