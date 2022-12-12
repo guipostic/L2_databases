@@ -46,7 +46,7 @@ INSERT INTO `Commandes` (`NumCom`, `NomC`, `NomP`, `Qte`) VALUES (1, 'Jean', 'br
 INSERT INTO `Commandes` (`NumCom`, `NomC`, `NomP`, `Qte`) VALUES (2, 'Jean', 'ciment', 10);
 INSERT INTO `Commandes` (`NumCom`, `NomC`, `NomP`, `Qte`) VALUES (3, 'Paul', 'briques', 3);
 INSERT INTO `Commandes` (`NumCom`, `NomC`, `NomP`, `Qte`) VALUES (4, 'Paul', 'parpaing', 9);
-INSERT INTO `Commandes` (`NumCom`, `NomC`, `NomP`, `Qte`) VALUES (5, 'Vicent', 'parpaing', 7);
+INSERT INTO `Commandes` (`NumCom`, `NomC`, `NomP`, `Qte`) VALUES (5, 'Vincent', 'parpaing', 7);
 
 INSERT INTO `Clients` (`NomC`, `AdresseC`, `Solde`) VALUES ('Jean', '75006 Paris', -12000);
 INSERT INTO `Clients` (`NomC`, `AdresseC`, `Solde`) VALUES ('Paul', '75003 Paris', 0);
