@@ -37,6 +37,7 @@ En général, une [cardinalité (1,1)](https://fr.wikipedia.org/wiki/Association
 Si le minimum de la cardinalité est strictement supérieur à 1 (« plusieurs »), celle-ci sera notée (2,n) ou parfois [(n,n)](https://fr.wikipedia.org/wiki/Mod%C3%A8le_relationnel#Relation_N:N), selon les conventions.
 
 ### 2.2 Algèbre relationnelle
+![cheat sheet](relational_algebra_cheat_sheet.png)
 
 [^1]: Par exemple, dans le Problème 3, les entrées dans une table enregistrant des emprunts de livres devront être identifiées par concaténation de la clef primaire du livre, de celle du lecteur et de la date d’emprunt. Autrement, la contrainte d’unicité sur les clefs primaires empêche un lecteur d’emprunter un exemplaire de livre particulier plus d’une fois.
 
