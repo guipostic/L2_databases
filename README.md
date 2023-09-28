@@ -24,9 +24,9 @@ En général, une [cardinalité (1,1)](https://fr.wikipedia.org/wiki/Association
 
 Si le minimum de la cardinalité est strictement supérieur à 1 (« plusieurs »), celle-ci sera notée (2,n) ou parfois [(n,n)](https://fr.wikipedia.org/wiki/Mod%C3%A8le_relationnel#Relation_N:N), selon les conventions.
 
-Dans une association ternaire
-* Les cardinalités minimales peuvent être à 0 ou 1 selon le contexte (participation facultative ou obligatoire de l'entité à l'association)
-* Toutes les cardinalités maximales sont obligatoirement à n
+Dans une association ternaire :
+* les cardinalités minimales peuvent être à 0 ou 1 selon le contexte (participation facultative ou obligatoire de l'entité à l'association) ;
+* toutes les cardinalités maximales sont obligatoirement à n.
 
 
 ## 2. Modèle logique
