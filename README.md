@@ -20,6 +20,15 @@ Enfin, la dernière séance sera consacrée à l'[algèbre relationnelle](https:
 
 Dans le cadre de cette UE, les diagrammes conceptuels représenteront les entités par des rectangles, les associations par des ovales et les cardinalités par des paires de chiffres. Dans la solution alternative présentée pour le Problème 4 (extraite des travaux de [De Gorostiza *et al.*, 2017](http://dx.doi.org/10.25147/ijcsr.2017.001.1.15)), la convention d'écriture utilisée est différente de celle vue en cours : les cardinalités y sont [représentées par des symboles](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model#/media/File:ERD_Representation.svg).
 
+En général, une [cardinalité (1,1)](https://fr.wikipedia.org/wiki/Association_un-%C3%A0-un) ne devrait pas apparaître sur les diagrammes conceptuels. Une double cardinalité (1,1) est une erreur : les deux entités doivent être rassemblées en une seule.
+
+Si le minimum de la cardinalité est strictement supérieur à 1 (« plusieurs »), celle-ci sera notée (2,n) ou parfois [(n,n)](https://fr.wikipedia.org/wiki/Mod%C3%A8le_relationnel#Relation_N:N), selon les conventions.
+
+Dans une association ternaire
+* Les cardinalités minimales peuvent être à 0 ou 1 selon le contexte (participation facultative ou obligatoire de l'entité à l'association)
+* Toutes les cardinalités maximales sont obligatoirement à n
+
+
 ## 2. Modèle logique
 ### 2.1 Schéma relationnel
 La transcription des diagrammes du **modèle entité-association** dans un **modèle relationnel** obéit aux règles suivantes :
@@ -32,9 +41,6 @@ La transcription des diagrammes du **modèle entité-association** dans un **mod
 
 Une clef étrangère est donc un attribut de la relation, c. -à-d. une colonne de la table. En lui-même, cet attribut ne fournit aucune description : il n’est qu’un code. Cependant, sa valeur renvoie à un enregistrement dans une autre table, dont il est la clef primaire.
 
-En général, une [cardinalité (1,1)](https://fr.wikipedia.org/wiki/Association_un-%C3%A0-un) ne devrait pas apparaître sur les diagrammes conceptuels.
-
-Si le minimum de la cardinalité est strictement supérieur à 1 (« plusieurs »), celle-ci sera notée (2,n) ou parfois [(n,n)](https://fr.wikipedia.org/wiki/Mod%C3%A8le_relationnel#Relation_N:N), selon les conventions.
 
 ### 2.2 Algèbre relationnelle
 ![cheat sheet](relational_algebra_cheat_sheet.png)
